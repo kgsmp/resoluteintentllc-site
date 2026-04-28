@@ -699,11 +699,14 @@
         </div>
       </div>
       <div class="contact-form">
-        <form onsubmit="handleContact(event)">
-          <div class="form-group"><label>Your Name</label><input type="text" placeholder="Name" required/></div>
-          <div class="form-group"><label>Email</label><input type="email" placeholder="your@email.com" required/></div>
+        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="f6b48cc3-70e5-44a0-a89a-75a8913b42ac"/>
+          <input type="hidden" name="subject" value="New Inquiry from resoluteintentllc.com"/>
+          <input type="hidden" name="from_name" value="Resolute Intent LLC Website"/>
+          <div class="form-group"><label>Your Name</label><input type="text" name="name" placeholder="Name" required/></div>
+          <div class="form-group"><label>Email</label><input type="email" name="email" placeholder="your@email.com" required/></div>
           <div class="form-group"><label>Inquiry Type</label>
-            <select>
+            <select name="inquiry">
               <option>Product Support / Engineering</option>
               <option>Data Analytics / Cleansing</option>
               <option>SSO / Identity Management</option>
@@ -715,12 +718,16 @@
               <option>Other</option>
             </select>
           </div>
-          <div class="form-group"><label>Message</label><textarea placeholder="Tell me about your project or opportunity..."></textarea></div>
+          <div class="form-group"><label>Message</label><textarea name="message" placeholder="Tell me about your project or opportunity..."></textarea></div>
           <button type="submit" class="btn-primary" style="width:100%">Send Message ✉️</button>
         </form>
         <div id="form-success" style="display:none;text-align:center;padding:1.5rem;color:var(--aqua)">
           <div style="font-size:2rem">✅</div>
           <p style="margin-top:0.5rem">Message sent! Kyle will be in touch shortly.</p>
+        </div>
+        <div id="form-error" style="display:none;text-align:center;padding:1.5rem;color:var(--pink)">
+          <div style="font-size:2rem">⚠️</div>
+          <p style="margin-top:0.5rem">Something went wrong. Please email <a href="mailto:info@resoluteintentllc.com" style="color:var(--aqua)">info@resoluteintentllc.com</a> directly.</p>
         </div>
       </div>
     </div>
@@ -789,16 +796,33 @@ function switchTab(name,btn){
   btn.classList.add('active');
 }
 
-function handleContact(e){
+// Web3Forms submission
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
   e.preventDefault();
-  const name=e.target.querySelector('input[type=text]').value;
-  const email=e.target.querySelector('input[type=email]').value;
-  const type=e.target.querySelector('select').value;
-  const msg=e.target.querySelector('textarea').value;
-  e.target.style.display='none';
-  document.getElementById('form-success').style.display='block';
-  setTimeout(()=>{window.location.href=`mailto:info@resoluteintentllc.com?subject=Website%20Inquiry%3A%20${encodeURIComponent(type)}&body=From%3A%20${encodeURIComponent(name)}%20(${encodeURIComponent(email)})%0A%0A${encodeURIComponent(msg)}`;},800);
-}
+  const form = e.target;
+  const btn = form.querySelector('button[type=submit]');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: new FormData(form)
+    });
+    const data = await res.json();
+    if (data.success) {
+      form.style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    } else {
+      document.getElementById('form-error').style.display = 'block';
+      btn.textContent = 'Send Message ✉️';
+      btn.disabled = false;
+    }
+  } catch(err) {
+    document.getElementById('form-error').style.display = 'block';
+    btn.textContent = 'Send Message ✉️';
+    btn.disabled = false;
+  }
+});
 
 const kb=[
   {k:['who is kyle','about kyle','introduce','background','kyle smith'],a:"Kyle G. Smith is a Los Angeles-based IT professional, independent tech consultant, music artist, and bilingual entrepreneur. He runs Resolute Intent LLC and specializes in Product Support Engineering, AV systems, data analytics, and SSO. He's also a recording artist (Resolute Fortitude) and DJ (DJ Wild Kyle)."},
