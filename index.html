@@ -178,9 +178,25 @@
     #dj { background: linear-gradient(180deg, transparent, rgba(0,212,232,0.04), transparent); }
     .dj-grid { display:grid; grid-template-columns:1fr 1.6fr; gap:2rem; align-items:center; }
     .dj-visual { background:var(--glass); border:1px solid var(--glass-border); border-radius:20px; padding:3rem 2rem; text-align:center; position:relative; overflow:hidden; }
-    .dj-visual::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at center,rgba(0,212,232,0.08) 0%,transparent 70%); }
+    .dj-visual::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at center,rgba(0,212,232,0.08) 0%,transparent 70%); pointer-events:none; }
     .dj-name { font-family:'Orbitron',sans-serif; font-size:1.6rem; font-weight:900; color:var(--aqua); margin-bottom:0.5rem; }
     .vinyl { font-size:5rem; display:block; margin-bottom:1rem; animation:spin-slow 4s linear infinite; }
+    /* === BRAND BANNER === */
+    #brands { position: relative; z-index: 1; padding: 2.2rem 0; background: rgba(0,0,0,0.25); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); overflow: hidden; }
+    .brands-label { text-align: center; font-size: 0.68rem; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1.4rem; font-family: 'Orbitron', sans-serif; }
+    .brands-track-wrap {
+      position: relative;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
+      mask-image: linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
+    }
+    .brands-track { display: flex; align-items: center; gap: 3.5rem; width: max-content; animation: scroll-brands 28s linear infinite; }
+    .brands-track:hover { animation-play-state: paused; }
+    @keyframes scroll-brands { 0%{ transform: translateX(0); } 100%{ transform: translateX(-50%); } }
+    .brand-item { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; flex-shrink: 0; opacity: 0.55; transition: opacity 0.3s ease, transform 0.3s ease; cursor: default; }
+    .brand-item:hover { opacity: 1; transform: scale(1.08); }
+    .brand-logo { height: 38px; width: auto; max-width: 110px; object-fit: contain; filter: grayscale(1) brightness(1.8); transition: filter 0.3s ease; }
+    .brand-item:hover .brand-logo { filter: grayscale(0) brightness(1); }
+    .brand-name { font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 600; }
     .dj-info { background:var(--glass); border:1px solid var(--glass-border); border-radius:20px; padding:2rem; }
     .dj-info h3 { font-family:'Orbitron',sans-serif; font-size:1rem; color:var(--aqua); margin-bottom:1rem; }
     .dj-info p, .dj-info li { color:var(--text-light); font-size:0.9rem; line-height:1.7; }
@@ -260,7 +276,7 @@
 <div class="particles" id="particles"></div>
 
 <nav id="navbar">
-  <div class="nav-brand">KYLE G. SMITH</div>
+  <div class="nav-brand">Resolute Intent LLC</div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
@@ -307,6 +323,33 @@
   </div>
 </section>
 
+<!-- BRAND BANNER -->
+<section id="brands">
+  <p class="brands-label">Audio Visual Clients Served</p>
+  <div class="brands-track-wrap">
+    <div class="brands-track">
+      <!-- Set 1 -->
+      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/walmart.com" alt="Walmart" onerror="this.style.display='none'"/><span class="brand-name">Walmart</span></div>
+      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/adidas.com" alt="Adidas" onerror="this.style.display='none'"/><span class="brand-name">Adidas</span></div>
+      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/nike.com" alt="Nike" onerror="this.style.display='none'"/><span class="brand-name">Nike</span></div>
+      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/mcdonalds.com" alt="McDonald's" onerror="this.style.display='none'"/><span class="brand-name">McDonald's</span></div>
+      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/gap.com" alt="Gap" onerror="this.style.display='none'"/><span class="brand-name">Gap</span></div>
+      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/questdiagnostics.com" alt="Quest Diagnostics" onerror="this.style.display='none'"/><span class="brand-name">Quest Diagnostics</span></div>
+      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/acehardware.com" alt="Ace Hardware" onerror="this.style.display='none'"/><span class="brand-name">Ace Hardware</span></div>
+      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/tjx.com" alt="TJX" onerror="this.style.display='none'"/><span class="brand-name">TJX</span></div>
+      <!-- Set 2 — duplicate for seamless loop -->
+      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/walmart.com" alt="Walmart" onerror="this.style.display='none'"/><span class="brand-name">Walmart</span></div>
+      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/adidas.com" alt="Adidas" onerror="this.style.display='none'"/><span class="brand-name">Adidas</span></div>
+      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/nike.com" alt="Nike" onerror="this.style.display='none'"/><span class="brand-name">Nike</span></div>
+      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/mcdonalds.com" alt="McDonald's" onerror="this.style.display='none'"/><span class="brand-name">McDonald's</span></div>
+      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/gap.com" alt="Gap" onerror="this.style.display='none'"/><span class="brand-name">Gap</span></div>
+      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/questdiagnostics.com" alt="Quest Diagnostics" onerror="this.style.display='none'"/><span class="brand-name">Quest Diagnostics</span></div>
+      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/acehardware.com" alt="Ace Hardware" onerror="this.style.display='none'"/><span class="brand-name">Ace Hardware</span></div>
+      <div class="brand-item"><img class="brand-logo" src="https://logo.clearbit.com/tjx.com" alt="TJX" onerror="this.style.display='none'"/><span class="brand-name">TJX</span></div>
+    </div>
+  </div>
+</section>
+
 <section id="about">
   <div class="section-wrap">
     <div class="section-header reveal">
@@ -318,7 +361,7 @@
       <div class="about-card">
         <h3>🎯 Professional Summary</h3>
         <p>Experienced IT professional with a strong background in Media and Technology, specializing in Audio/Visual solutions, network management, and project management. Adept at utilizing Scrum and Agile methods to enhance team collaboration. Independent contractor running <strong style="color:var(--aqua)">Resolute Intent LLC</strong> since 2018, supporting international technical teams and AV clients with networks serving 2,000–10,000 devices.</p>
-        <br/><p>With over a decade in tech support, data operations, and bilingual client services, Kyle bridges the gap between complex technical systems and real-world business needs — across entertainment, media, retail, and healthcare sectors.</p>
+        <br/><p>With over a decade in tech support, data operations, and bilingual client services, Kyle bridges the gap between complex technical systems and real-world business needs - across entertainment, media, retail, and healthcare sectors.</p>
       </div>
       <div class="about-card">
         <h3>📊 At a Glance</h3>
@@ -349,6 +392,11 @@
     </div>
     <div id="tab-tech" class="skills-panel active reveal">
       <div class="skills-grid">
+        <div class="skill-chip"><div class="skill-icon blue">🤖</div> ChatGPT</div>
+        <div class="skill-chip"><div class="skill-icon blue">🤖</div> Claude (Anthropic)</div>
+        <div class="skill-chip"><div class="skill-icon blue">🤖</div> Gemini</div>
+        <div class="skill-chip"><div class="skill-icon blue">🤖</div> CoPilot</div>
+        <div class="skill-chip"><div class="skill-icon purple">🎨</div> Canva</div>
         <div class="skill-chip"><div class="skill-icon blue">☁️</div> AWS (S3, EC2)</div>
         <div class="skill-chip"><div class="skill-icon blue">🗄️</div> SQL / SSMS</div>
         <div class="skill-chip"><div class="skill-icon blue">🔐</div> OKTA SSO</div>
@@ -558,7 +606,7 @@
         <a href="https://music.apple.com/ca/artist/resolute-fortitude/1680965572" target="_blank" rel="noopener noreferrer" class="platform-btn pb-apple">🍎 Apple Music</a>
         <a href="https://soundcloud.com/resolutefortitude" target="_blank" rel="noopener noreferrer" class="platform-btn pb-soundcloud">☁️ SoundCloud</a>
         <a href="https://www.youtube.com/@kylegsmithmp" target="_blank" rel="noopener noreferrer" class="platform-btn pb-youtube">▶ YouTube</a>
-        <a href="https://resolute-fortitude.disco.ac" target="_blank" rel="noopener noreferrer" class="platform-btn pb-disco">🎬 DISCO (Sync)</a>
+        <a href="https://resolute-fortitude.disco.ac/playlist-new/15958650?date=20240708&user_id=1461435&signature=FqcszXwQi7h6iHMkqJc_agh5M4g%3AwfxOJYNL" target="_blank" rel="noopener noreferrer" class="platform-btn pb-disco">🎬 DISCO (Sync)</a>
         <a href="https://www.instagram.com/resolutefortitude" target="_blank" rel="noopener noreferrer" class="platform-btn" style="border-color:#E1306C;color:#E1306C;background:rgba(225,48,108,0.08)">📸 Instagram</a>
         <a href="https://www.facebook.com/resolutefortitude" target="_blank" rel="noopener noreferrer" class="platform-btn" style="border-color:#1877F2;color:#1877F2;background:rgba(24,119,242,0.08)">👍 Facebook</a>
         <a href="https://linktr.ee/ResoluteFortitude" target="_blank" rel="noopener noreferrer" class="platform-btn" style="border-color:#43E55E;color:#43E55E;background:rgba(67,229,94,0.08)">🌿 Linktree</a>
@@ -642,7 +690,7 @@
         <h3>📬 Get in Touch</h3>
         <p>Ready to bring on a skilled tech consultant, data analyst, bilingual specialist, or music collaborator? Reach out via email or connect on LinkedIn.</p>
         <div class="contact-links">
-          <a href="mailto:kylegsmithmp@gmail.com?subject=Inquiry%20from%20KyleGSmith.com" class="contact-link"><div class="contact-link-icon">📧</div>kylegsmithmp@gmail.com</a>
+          <a href="mailto:kyle.smith@resoluteintentllc.com?subject=Inquiry%20from%20KyleGSmith.com" class="contact-link"><div class="contact-link-icon">📧</div>kyle.smith@resoluteintentllc.com</a>
           <a href="mailto:info@resoluteintent.com?subject=Inquiry%20from%20Website" class="contact-link"><div class="contact-link-icon">🏢</div>Resolute Intent LLC</a>
           <a href="https://linkedin.com/in/kylegsmith" target="_blank" rel="noopener noreferrer" class="contact-link"><div class="contact-link-icon">💼</div>linkedin.com/in/kylegsmith</a>
           <a href="https://www.resolutefortitude.com" target="_blank" rel="noopener noreferrer" class="contact-link"><div class="contact-link-icon">🎵</div>resolutefortitude.com</a>
@@ -683,7 +731,7 @@
   <div class="footer-brand">KYLE G. SMITH · RESOLUTE INTENT LLC</div>
   <p>Los Angeles, California · Tech Consultant · Music Artist · Bilingual Professional</p>
   <p style="margin-top:0.5rem">
-    <a href="mailto:kylegsmithmp@gmail.com">kylegsmithmp@gmail.com</a> &nbsp;·&nbsp;
+    <a href="mailto:kyle.smith@resoluteintentllc.com">kyle.smith@resoluteintentllc.com</a> &nbsp;·&nbsp;
     <a href="https://linkedin.com/in/kylegsmith" target="_blank" rel="noopener noreferrer">LinkedIn</a> &nbsp;·&nbsp;
     <a href="https://www.resolutefortitude.com" target="_blank" rel="noopener noreferrer">Resolute Fortitude</a> &nbsp;·&nbsp;
     <a href="https://soundcloud.com/kylegsmithmp" target="_blank" rel="noopener noreferrer">SoundCloud</a>
@@ -749,7 +797,7 @@ function handleContact(e){
   const msg=e.target.querySelector('textarea').value;
   e.target.style.display='none';
   document.getElementById('form-success').style.display='block';
-  setTimeout(()=>{window.location.href=`mailto:kylegsmithmp@gmail.com?subject=Website%20Inquiry%3A%20${encodeURIComponent(type)}&body=From%3A%20${encodeURIComponent(name)}%20(${encodeURIComponent(email)})%0A%0A${encodeURIComponent(msg)}`;},800);
+  setTimeout(()=>{window.location.href=`mailto:kyle.smith@resoluteintentllc.com?subject=Website%20Inquiry%3A%20${encodeURIComponent(type)}&body=From%3A%20${encodeURIComponent(name)}%20(${encodeURIComponent(email)})%0A%0A${encodeURIComponent(msg)}`;},800);
 }
 
 const kb=[
@@ -766,7 +814,7 @@ const kb=[
   {k:['spanish','bilingual','translation','interpreter','language'],a:"Kyle is fully bilingual in English and Spanish. He has professional experience as a Spanish/English Translator at the International Services Center (2009–2014), as a Bilingual Case Manager, and as an English Professor in Mexico at UDLAP. He offers translation and interpretation services."},
   {k:['education','ohio state','degree','university','psychology'],a:"Kyle holds two Bachelor of Arts degrees from The Ohio State University: one in Psychology and one in Spanish. This dual background informs his empathetic client communication and cross-cultural fluency."},
   {k:['services','hire','work with','opportunity','available'],a:"Kyle offers: Product Support Engineering, Data Analysis & Cleansing, SSO/Identity Management, AI Tool Development, Music Sync Licensing, Spanish/English Translation, AV & Network Systems, and Music Production/Collaboration. He's available for remote work worldwide."},
-  {k:['contact','email','reach','get in touch','phone'],a:"You can reach Kyle at kylegsmithmp@gmail.com or through Resolute Intent LLC. Connect on LinkedIn at linkedin.com/in/kylegsmith. Use the contact form on this page to send a direct inquiry!"},
+  {k:['contact','email','reach','get in touch','phone'],a:"You can reach Kyle at kyle.smith@resoluteintentllc.com or through Resolute Intent LLC. Connect on LinkedIn at linkedin.com/in/kylegsmith. Use the contact form on this page to send a direct inquiry!"},
   {k:['light','hardcore','band','cleveland','concert'],a:"Kyle sang for Cleveland Hardcore band L.I.G.H.T. and performed alongside bands like Texas is the Reason, Converge, Hot Water Music, Ascension, Chalkline, Albino, and Zao — building a deep live music performance background."},
   {k:['ai','tools','automation','build','chatbot'],a:"Kyle designs and builds AI-powered tools and automation to streamline workflows and support operations. He has experience with Python scripting, API integrations, and creating internal tools for enterprise teams — and he built this chatbot you're talking to!"},
   {k:['location','where','los angeles','remote','available'],a:"Kyle is based in Los Angeles, California and is available for remote work worldwide. He has experience working with international teams across time zones."},
@@ -776,7 +824,7 @@ const kb=[
 function getBotResponse(q){
   q=q.toLowerCase().trim();
   for(const item of kb){if(item.k.some(k=>q.includes(k)))return item.a;}
-  const d=["Great question! For the most direct answer, feel free to email Kyle at kylegsmithmp@gmail.com.","That's something Kyle would love to discuss! Use the contact form or email him directly.","I might not have that specific answer, but Kyle does! Reach out via email or LinkedIn.","Interesting! Try the contact form and Kyle will answer personally. 😊"];
+  const d=["Great question! For the most direct answer, feel free to email Kyle at kyle.smith@resoluteintentllc.com.","That's something Kyle would love to discuss! Use the contact form or email him directly.","I might not have that specific answer, but Kyle does! Reach out via email or LinkedIn.","Interesting! Try the contact form and Kyle will answer personally. 😊"];
   return d[Math.floor(Math.random()*d.length)];
 }
 
