@@ -543,6 +543,32 @@
   </div>
 </section>
 
+<section id="case-studies">
+  <div class="section-wrap">
+    <div class="section-header reveal">
+      <p class="section-label">Real Results</p>
+      <h2 class="section-title">Case Study</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="reveal" style="max-width:780px;margin:0 auto;">
+      <div class="timeline-card" style="padding:2.2rem 2.5rem;border-left:3px solid var(--aqua);">
+        <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:1.2rem;flex-wrap:wrap;">
+          <span class="badge badge-tech">Enterprise AV / CMS</span>
+          <span class="badge badge-tech">Digital Signage</span>
+          <span class="badge badge-biz">Anonymized Client</span>
+        </div>
+        <p style="color:var(--text-light);line-height:1.85;font-size:0.95rem;margin:0 0 1.4rem;">
+          An enterprise AV/CMS platform experienced recurring playback failures and inaccurate proof-of-play reporting across distributed devices. I analyzed device logs, identified failure patterns, used SQL and reporting workflows to validate playback data, and coordinated fixes with engineering through Jira. The result was faster issue resolution, improved reporting accuracy, and more stable content delivery operations.
+        </p>
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin-bottom:1.4rem;">
+        <p style="color:var(--aqua);font-size:0.92rem;font-weight:600;letter-spacing:0.5px;margin:0;">
+          💡 Kyle supported AV/digital signage networks generating $9M+ in annual recurring revenue across 10,000+ devices.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="services">
   <div class="section-wrap">
     <div class="section-header reveal">
@@ -734,13 +760,10 @@
   <div class="chat-suggestions">
     <button class="chat-suggest" onclick="askBot(this)">What does Kyle do?</button>
     <button class="chat-suggest" onclick="askBot(this)">Tell me about his music</button>
-    <button class="chat-suggest" onclick="askBot(this)">What services does he offer?</button>
     <button class="chat-suggest" onclick="askBot(this)">How to hire Kyle?</button>
     <button class="chat-suggest" onclick="askBot(this)">Book Kyle to DJ an event</button>
     <button class="chat-suggest" onclick="askBot(this)">Does Kyle offer scratching?</button>
-    <button class="chat-suggest" onclick="askBot(this)">Does Kyle write lyrics?</button>
     <button class="chat-suggest" onclick="askBot(this)">Does Kyle offer Spanish translation?</button>
-    <button class="chat-suggest" onclick="askBot(this)">Where can I hear his music?</button>
   </div>
   <div class="chat-input-wrap">
     <input id="chat-input" type="text" placeholder="Ask about Kyle..." onkeypress="if(event.key==='Enter') sendMessage()"/>
@@ -828,7 +851,7 @@ const kb=[
   // HOW LEARNED MUSIC
   {k:['how did kyle learn','how learn','who taught','how he learned','taught himself'],a:"Kyle learned from family first, then teachers — and has been playing ever since."},
   // MUSIC GENERAL
-  {k:['resolute fortitude','music project','artist','songs','tracks','album'],a:"Resolute Fortitude is Kyle's music project — imagine Rage Against The Machine, KRS-One, Skrillex, and Bob Marley in a jam session. Songs include Turn On Life, Only Condone Me, Right Now, and Arrows. Available on Spotify, Apple Music, SoundCloud, and more."},
+  {k:['resolute fortitude','music project','artist','songs','tracks','album','tell me about his music','about his music','music'],a:"Resolute Fortitude fuses positive, consciousness-raising themes over a volatile mix of Hip Hop, Hardcore, and Electronic music. Songs include Turn On Life, Only Condone Me, Right Now, and Arrows. Available on Spotify, Apple Music, SoundCloud, and more."},
   // SYNC LICENSING
   {k:['sync','licensing','film','tv','commercial','video game','disco','film music','tv music'],a:"Kyle's music is available for sync licensing in Film, TV, Commercials, and Video Games via DISCO (resolute-fortitude.disco.ac). Registered on BMI as Conteneity Media and ASCAP as Conteneity."},
   // BMI / ASCAP
