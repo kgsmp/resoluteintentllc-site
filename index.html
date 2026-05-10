@@ -763,6 +763,11 @@
     <button class="chat-suggest" onclick="askBot(this)">Tell me about his music</button>
     <button class="chat-suggest" onclick="askBot(this)">What services does he offer?</button>
     <button class="chat-suggest" onclick="askBot(this)">How to hire Kyle?</button>
+    <button class="chat-suggest" onclick="askBot(this)">Book Kyle to DJ an event</button>
+    <button class="chat-suggest" onclick="askBot(this)">Does Kyle offer scratching?</button>
+    <button class="chat-suggest" onclick="askBot(this)">Does Kyle write lyrics?</button>
+    <button class="chat-suggest" onclick="askBot(this)">Does Kyle offer Spanish translation?</button>
+    <button class="chat-suggest" onclick="askBot(this)">Where can I hear his music?</button>
   </div>
   <div class="chat-input-wrap">
     <input id="chat-input" type="text" placeholder="Ask about Kyle..." onkeypress="if(event.key==='Enter') sendMessage()"/>
@@ -825,30 +830,80 @@ document.getElementById('contact-form').addEventListener('submit', async functio
 });
 
 const kb=[
-  {k:['who is kyle','about kyle','introduce','background','kyle smith'],a:"Kyle G. Smith is a Los Angeles-based IT professional, independent tech consultant, music artist, and bilingual entrepreneur. He runs Resolute Intent LLC and specializes in Product Support Engineering, AV systems, data analytics, and SSO. He's also a recording artist (Resolute Fortitude) and DJ (DJ Wild Kyle)."},
-  {k:['resolute intent','llc','company','business'],a:"Resolute Intent LLC is Kyle's California-registered independent consulting business, operating since October 2018. He provides technical consulting to international teams — supporting AV clients with networks of 2,000–10,000 devices across Android, Windows, and iOS platforms."},
-  {k:['tech skills','technical skills','what can','aws','programming','sql','python'],a:"Kyle's tech stack includes: AWS (S3, EC2), SQL/SSMS, OKTA SSO, Python, HTML/CSS/JavaScript, Postman API, Linux/Terminal, Raspberry Pi, OpenVPN, LAN/WAN networking. He's also proficient in Jira, Excel, Google Suite, and Agile/Scrum methodologies."},
-  {k:['data','analytics','excel','sheets','cleansing','cleaning'],a:"Kyle is highly skilled in data analytics and cleansing using Excel, Google Sheets, SQL, and Python. He performs ad campaign analysis, Proof-of-Play reporting, data visualization, and builds tools to automate data workflows."},
-  {k:['sso','okta','identity','authentication','security'],a:"Kyle has hands-on experience implementing SSO through OKTA and managing user databases via SSMS with SQL. He's enhanced security protocols and user management systems for enterprise clients."},
-  {k:['av','audio visual','digital signage','mood media'],a:"Kyle managed AV systems and digital signage networks at Mood Media (2014–2018) and continues as an independent consultant. He supports networks of 2,000–10,000 devices, programs video/music playlists, and troubleshoots hardware/software defects."},
-  {k:['music','resolute fortitude','artist','songs','tracks'],a:"Resolute Fortitude is Kyle's music project — described as Rage Against The Machine, KRS-One, Skrillex, and Bob Marley in a jam session. Genres: Hip Hop, Hardcore, Electronic. Songs include Turn On Life, Only Condone Me, Right Now, and Arrows. Available on Spotify, Apple Music, and SoundCloud. Follow on Instagram/Facebook @resolutefortitude."},
-  {k:['sync','licensing','film','tv','commercial','video game','disco'],a:"Kyle's music is available for sync licensing in Film, TV, Commercials, and Video Games via DISCO. He is registered as a publisher on BMI (as Conteneity Media) and ASCAP (as Conteneity). Contact him directly for custom sync inquiries."},
-  {k:['bmi','ascap','publisher','conteneity'],a:"Kyle is a registered music publisher on two major PROs: BMI under the name 'Conteneity Media' and ASCAP under 'Conteneity'. This allows him to collect performance royalties and license his catalog for sync opportunities."},
-  {k:['dj','dj wild kyle','turntable','mixcloud','hip hop dj'],a:"As DJ Wild Kyle, he specializes in Turntablism, DJ battles, Hip Hop concerts, Breakdance battle events, and club nights. You can find his mixes on SoundCloud (kylegsmithmp) and Mixcloud. He uses Serato DJ and has competed in DJ battle circuits."},
-  {k:['spanish','bilingual','translation','interpreter','language'],a:"Kyle is fully bilingual in English and Spanish. He has professional experience as a Spanish/English Translator at the International Services Center (2009–2014), as a Bilingual Case Manager, and as an English Professor in Mexico at UDLAP. He offers translation and interpretation services."},
-  {k:['education','ohio state','degree','university','psychology'],a:"Kyle holds two Bachelor of Arts degrees from The Ohio State University: one in Psychology and one in Spanish. This dual background informs his empathetic client communication and cross-cultural fluency."},
-  {k:['services','hire','work with','opportunity','available'],a:"Kyle offers: Product Support Engineering, Data Analysis & Cleansing, SSO/Identity Management, AI Tool Development, Music Sync Licensing, Spanish/English Translation, AV & Network Systems, and Music Production/Collaboration. He's available for remote work worldwide."},
-  {k:['contact','email','reach','get in touch','phone'],a:"You can reach Kyle at kyle.smith@resoluteintentllc.com or through Resolute Intent LLC. Connect on LinkedIn at linkedin.com/in/kylegsmith. Use the contact form on this page to send a direct inquiry!"},
-  {k:['light','hardcore','band','cleveland','concert'],a:"Kyle sang for Cleveland Hardcore band L.I.G.H.T. and performed alongside bands like Texas is the Reason, Converge, Hot Water Music, Ascension, Chalkline, Albino, and Zao — building a deep live music performance background."},
-  {k:['ai','tools','automation','build','chatbot'],a:"Kyle designs and builds AI-powered tools and automation to streamline workflows and support operations. He has experience with Python scripting, API integrations, and creating internal tools for enterprise teams — and he built this chatbot you're talking to!"},
-  {k:['location','where','los angeles','remote','available'],a:"Kyle is based in Los Angeles, California and is available for remote work worldwide. He has experience working with international teams across time zones."},
-  {k:['youtube','soundcloud','streaming','playlist','spotify'],a:"Find Kyle on Spotify at open.spotify.com/artist/349VoXtvXbeaBFwWr6GhwQ, YouTube at @kylegsmithmp, SoundCloud at resolutefortitude (music) and kylegsmithmp (DJ mixes), Apple Music, Instagram/Facebook at @resolutefortitude, and DISCO for sync licensing."}
+  // WHO IS KYLE / WHAT DOES HE DO
+  {k:['who is kyle','about kyle','introduce','what does kyle do','what do you do','what does he do'],a:"Kyle consults and does hands-on work for Audio/Visual projects, App/Software/Hardware Product Support, Data Analytics & Visualization, Project Management — and he's also a Musician & DJ. He runs Resolute Intent LLC in Los Angeles."},
+  // RESOLUTE INTENT
+  {k:['resolute intent','llc','company','business','consulting'],a:"Resolute Intent LLC is Kyle's California-registered independent consulting business, operating since October 2018. He supports international technical teams and AV clients with networks of 2,000–10,000 devices across Android, Windows, and iOS platforms."},
+  // HOW TO HIRE
+  {k:['how to hire','hire kyle','work with kyle','hire him','get started','book kyle'],a:"Fill out the contact form on this page and Kyle will get back to you soon. You can also connect on LinkedIn at linkedin.com/in/kylegsmith."},
+  // RESPONSE TIME
+  {k:['how soon','when will','hear back','response time','when will i','get a response','how long to respond','when will he respond'],a:"Kyle responds as soon as possible, usually within 2 business days."},
+  // DJ - GENERAL
+  {k:['how long has kyle been a dj','how many years dj','how long dj','dj for how long','dj experience','dj background'],a:"Kyle has been an active DJ for decades."},
+  // DJ - EVENTS
+  {k:['dj wedding','dj event','dj night','dj club','dj parties','dj party','does kyle dj','available to dj','book dj'],a:"Kyle is open to all types of events. Fill out the contact form and he'll get back to you soon."},
+  // DJ - SCRATCHING
+  {k:['scratch','scratching','scratch for rapper','scratch for song','turntablis','dj scratch','vocals'],a:"Kyle offers scratching services for songs. He can use your vocals or any sounds you'd like. Fill out the contact form and he'll get back to you soon."},
+  // DJ GENERAL
+  {k:['dj wild kyle','turntable','mixcloud','serato','battle','breakdance'],a:"As DJ Wild Kyle, Kyle specializes in Turntablism, DJ battles, Hip Hop concerts, Breakdance battle events, and club nights. Find his mixes on SoundCloud (kylegsmithmp) and Mixcloud (mixcloud.com/kylegsmith)."},
+  // INSTRUMENTS
+  {k:['instrument','guitar','bass','drums','sing','scream','what does kyle play','what instruments'],a:"Kyle plays Guitar, Bass, Drums — and also Sings, Screams, and performs DJ Scratches / Turntablism."},
+  // LYRICS
+  {k:['lyric','write lyrics','songwriter','lyrics','write songs','write music'],a:"Kyle writes lyrics with decades of experience as a songwriter and lyricist."},
+  // HOW LONG PLAYING MUSIC
+  {k:['how long has kyle played','how long playing','how long been playing','when did kyle start','start playing','learn guitar','learn music','learn to play'],a:"Kyle started learning and playing Guitar at age 5, along with Drums and Bass."},
+  // HOW LEARNED MUSIC
+  {k:['how did kyle learn','how learn','who taught','how he learned','taught himself'],a:"Kyle learned from family first, then teachers — and has been playing ever since."},
+  // MUSIC GENERAL
+  {k:['resolute fortitude','music project','artist','songs','tracks','album'],a:"Resolute Fortitude is Kyle's music project — imagine Rage Against The Machine, KRS-One, Skrillex, and Bob Marley in a jam session. Songs include Turn On Life, Only Condone Me, Right Now, and Arrows. Available on Spotify, Apple Music, SoundCloud, and more."},
+  // SYNC LICENSING
+  {k:['sync','licensing','film','tv','commercial','video game','disco','film music','tv music'],a:"Kyle's music is available for sync licensing in Film, TV, Commercials, and Video Games via DISCO (resolute-fortitude.disco.ac). Registered on BMI as Conteneity Media and ASCAP as Conteneity."},
+  // BMI / ASCAP
+  {k:['bmi','ascap','publisher','conteneity','royalt'],a:"Kyle is a registered music publisher on BMI under 'Conteneity Media' and ASCAP under 'Conteneity', allowing him to collect performance royalties and license his catalog."},
+  // HARDCORE BAND
+  {k:['light','hardcore','band','cleveland','concert','converge','hot water'],a:"Kyle sang for Cleveland Hardcore band L.I.G.H.T. and performed alongside Texas is the Reason, Converge, Hot Water Music, Ascension, Chalkline, Albino, and Zao."},
+  // SPANISH TRANSLATION / INTERPRETATION
+  {k:['spanish','translation','interpret','bilingual','english to spanish','spanish to english','does kyle offer spanish','does kyle translate','does kyle interpret'],a:"Kyle offers Spanish and English interpretation and translation services with over 20 years of daily experience speaking, reading, listening, and writing in Spanish."},
+  // NATIVE LANGUAGE
+  {k:['native language','first language','native tongue','what language','mother tongue'],a:"Kyle's native language is English."},
+  // NATIVE SPANISH SPEAKER
+  {k:['native spanish','speak spanish','spanish speaker','how long spanish','years spanish','fluent spanish','near native'],a:"Kyle is a near-native Spanish speaker with over 20 years of daily listening, speaking, reading, and writing in Spanish."},
+  // TECH SKILLS
+  {k:['tech skills','technical skills','aws','programming','sql','python','coding','stack'],a:"Kyle's tech stack includes: AWS (S3, EC2), SQL/SSMS, OKTA SSO, Python, HTML/CSS/JavaScript, Postman API, Linux, Raspberry Pi, OpenVPN, LAN/WAN networking, Jira, Excel, Google Suite, and Agile/Scrum."},
+  // DATA
+  {k:['data','analytics','excel','google sheets','cleansing','cleaning','visualization','reporting'],a:"Kyle is skilled in data analytics and cleansing using Excel, Google Sheets, SQL, and Python — including ad campaign analysis, Proof-of-Play reporting, and data visualization."},
+  // SSO
+  {k:['sso','okta','identity','authentication','security','single sign'],a:"Kyle has hands-on experience implementing SSO through OKTA and managing user databases via SSMS with SQL for enterprise clients."},
+  // AV
+  {k:['audio visual','av ','digital signage','mood media','signage','screen','display'],a:"Kyle managed AV systems and digital signage networks at Mood Media (2014–2018) and continues as an independent consultant supporting networks of 2,000–10,000 devices."},
+  // AI
+  {k:['ai','artificial intelligence','chatgpt','does kyle know ai','claude','machine learning','automation'],a:"Kyle has years of experience using AI to solve complex problems for clients and personal projects — jumping in essentially as soon as ChatGPT was released to the public."},
+  // CONTACT
+  {k:['contact','email','reach','get in touch','phone','message'],a:"Use the contact form on this page and Kyle will get back to you within 2 business days. You can also connect on LinkedIn at linkedin.com/in/kylegsmith."},
+  // EDUCATION
+  {k:['education','ohio state','degree','university','psychology','college','school'],a:"Kyle holds two Bachelor of Arts degrees from The Ohio State University — one in Psychology and one in Spanish."},
+  // LOCATION
+  {k:['location','where','los angeles','remote','based','city'],a:"Kyle is based in Los Angeles, California and is available for remote work worldwide."},
+  // STREAMING
+  {k:['spotify','apple music','soundcloud','youtube','stream','listen','where can i hear'],a:"Find Kyle's music on Spotify (open.spotify.com/artist/349VoXtvXbeaBFwWr6GhwQ), Apple Music, SoundCloud (resolutefortitude), YouTube (@kylegsmithmp), and follow on Instagram/Facebook @resolutefortitude."}
 ];
 
 function getBotResponse(q){
   q=q.toLowerCase().trim();
-  for(const item of kb){if(item.k.some(k=>q.includes(k)))return item.a;}
-  const d=["Great question! For the most direct answer, feel free to email Kyle at kyle.smith@resoluteintentllc.com.","That's something Kyle would love to discuss! Use the contact form or email him directly.","I might not have that specific answer, but Kyle does! Reach out via email or LinkedIn.","Interesting! Try the contact form and Kyle will answer personally. 😊"];
+  // Score each KB entry by how many keywords match
+  let best=null, bestScore=0;
+  for(const item of kb){
+    let score=0;
+    for(const k of item.k){ if(q.includes(k)) score++; }
+    if(score>bestScore){ bestScore=score; best=item; }
+  }
+  if(best && bestScore>0) return best.a;
+  const d=[
+    "Great question! Fill out the contact form and Kyle will get back to you within 2 business days.",
+    "Kyle would love to discuss that — use the contact form at the bottom of this page.",
+    "I may not have that specific answer, but Kyle does! Reach out via the contact form or LinkedIn.",
+    "Try the contact form below and Kyle will answer personally, usually within 2 business days. 😊"
+  ];
   return d[Math.floor(Math.random()*d.length)];
 }
 
